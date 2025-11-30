@@ -21,7 +21,7 @@ export function Dashboard() {
 export const StatsCard = React.memo(function StatsCard({ count }) {
     return (
         <section>
-            <h2>Stats</h2>
+            <h2>Stats Info</h2>
             <CountDisplay value={count} />
         </section>
     );
