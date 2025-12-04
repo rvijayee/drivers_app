@@ -4,7 +4,9 @@ import EditableField from "../components/EditableField";
 
 describe("EditableField", () => {
   test("renders without crashing", () => {
-    render(<EditableField />);
+    // Provide minimal required props to avoid undefined errors
+    render(<EditableField cellData={{}} />);
+    // Optionally, check for a known element or just that render did not throw
     expect(screen).toBeDefined();
   });
 

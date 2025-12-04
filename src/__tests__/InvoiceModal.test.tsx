@@ -4,8 +4,10 @@ import InvoiceModal from "../components/InvoiceModal";
 
 describe("InvoiceModal", () => {
   test("renders without crashing", () => {
-    render(<InvoiceModal />);
-    expect(screen).toBeDefined();
+    // Provide minimal required props to prevent undefined errors
+    render(<InvoiceModal info={{}} />);
+    // Check for a known element in the modal, e.g., the default billFrom name
+    expect(screen.getByText("John Uberbacher")).toBeInTheDocument();
   });
 
   test("component is defined", () => {
