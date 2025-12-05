@@ -45,5 +45,9 @@
     "@testing-library/react": "^12.1.5",
     "jsdom": "^19.0.0",
     "vitest": "^4.0.15"
+  },
+  "moduleNameMapper": {
+    "html2canvas": "<rootDir>/__mocks__/html2canvas.js",
+    "jspdf": "<rootDir>/__mocks__/jspdf.js"
   }
 }

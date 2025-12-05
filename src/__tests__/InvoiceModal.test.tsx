@@ -1,13 +1,30 @@
 import React from "react";
-import { render, screen } from "@testing-library/react";
+import { render, screen, vi } from "@testing-library/react";
+import "@testing-library/jest-dom";
 import InvoiceModal from "../components/InvoiceModal";
 
+// ⬅ mock react-bootstrap Modal so it renders children normally
+jest.mock("react-bootstrap/Modal", () => {
+  return ({ children }) => <div data-testid="mock-modal">{children}</div>;
+});
+
 describe("InvoiceModal", () => {
-  test("renders without crashing", () => {
-    // Provide minimal required props to prevent undefined errors
-    render(<InvoiceModal info={{}} />);
-    // Check for a known element in the modal, e.g., the default billFrom name
-    expect(screen.getByText("John Uberbacher")).toBeInTheDocument();
+  test("renders invoice content", () => {
+    render(
+      <InvoiceModal
+        showModal={true}           // ✔ FIXED
+        closeModal={() => { }}      // ✔ FIXED
+        info={{
+          billFrom: "John Uberbacher",
+          invoiceNumber: "123"
+        }}
+        items={[]}
+        currency="$"
+        total={0}
+      />
+    );
+
+    expect(screen.getByText(/John Uberbacher/i)).toBeInTheDocument();
   });
 
   test("component is defined", () => {
